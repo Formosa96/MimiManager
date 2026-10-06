@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mimimanager/screens/navigation_screen.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Supabase.initialize(url: 'https://ufvbrioltjiyrmtuqebg.supabase.com',
+      publishableKey: 'sb_publishable_LFgVHK8Ja83PE8Q7wBqgUA_wJPwoQWz');
   runApp(const MimiManagerApp());
 }
 
@@ -13,12 +17,6 @@ class MimiManagerApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'MimiManager',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
-        ),
-        useMaterial3: true,
-      ),
       home: const NavigationScreen(),
     );
   }
